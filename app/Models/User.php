@@ -16,6 +16,14 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $name
  * @property string $email
  * @property string $password
+ * @property string $address_line1
+ * @property string $address_line2
+ * @property string $barangay
+ * @property string $municipality
+ * @property string $province
+ * @property string $zip_code
+ * @property string $id_presented
+ * @property string $mobile_number
  *
  */
 class User extends Authenticatable

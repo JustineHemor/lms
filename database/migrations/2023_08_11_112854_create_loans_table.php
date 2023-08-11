@@ -29,10 +29,11 @@ return new class extends Migration
             $table->decimal('service_fee');
             $table->decimal('balance');
             $table->dateTime('activated_at')->nullable();
-            $table->dateTime('rejected_at')->nullable();
             $table->dateTime('completed_at')->nullable();
             $table->dateTime('renewed_at')->nullable();
             $table->dateTime('cancelled_at')->nullable();
+            $table->dateTime('rejected_at')->nullable();
+            $table->text('rejection_reason')->nullable();
             $table->integer('needed_approval_count');
             $table->integer('approval_count');
             $table->foreignIdFor(Loan::class, 'renewed_on')->index();

@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Loan;
-use App\Models\LoanType;
 use App\Models\User;
+use Domain\Loan\Models\Loan;
+use Domain\LoanType\Models\LoanType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

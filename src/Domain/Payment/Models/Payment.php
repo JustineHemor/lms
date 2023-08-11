@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Payment\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LoanType extends Model
+class Payment extends Model
 {
     use HasFactory;
 }

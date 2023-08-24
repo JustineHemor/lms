@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Domain\Loan\Models\Loan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +10,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class LoanFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Loan::class;
+
     public function definition(): array
     {
         return [
-            //
+            'state' => 'pending',
+
         ];
     }
 }

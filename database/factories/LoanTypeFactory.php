@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Domain\LoanType\Models\LoanType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +10,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class LoanTypeFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = LoanType::class;
+
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->words(2, true),
+            'interest_rate' => $this->faker->randomFloat(2, 0.5, 1),
+            'service_fee' => $this->faker->randomFloat(2, 0.5, 1),
         ];
     }
 }

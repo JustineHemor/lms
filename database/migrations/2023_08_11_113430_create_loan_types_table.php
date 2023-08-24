@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('loan_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->index();
-            $table->decimal('interest_rate');
-            $table->decimal('service_fee');
+            $table->decimal(column: 'interest_rate', places: 3);
+            $table->decimal(column: 'service_fee', places: 3);
             $table->timestamps();
         });
     }

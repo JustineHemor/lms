@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
@@ -28,7 +29,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make('123qweasd'),
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
@@ -68,5 +69,20 @@ class UserFactory extends Factory
                 ->when(is_callable($callback), $callback),
             'ownedTeams'
         );
+    }
+
+    public function completeDetails(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'mobile_number' => $this->faker->numerify('0917#######'),
+                'address_line1' => $this->faker->streetAddress,
+                'address_line2' => $this->faker->streetAddress,
+                'barangay' => $this->faker->city,
+                'municipality' => $this->faker->city,
+                'province' => $this->faker->city,
+                'zip_code' => $this->faker->numerify('####'),
+            ];
+        });
     }
 }

@@ -16,8 +16,11 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
+
             $table->string('state')->index();
+
             $table->foreignIdFor(User::class, 'requester_id')->index();
+
             $table->string('application_number')->index();
             $table->foreignIdFor(LoanType::class, 'loan_type_id')->index();
             $table->string('payment_term');
@@ -28,16 +31,21 @@ return new class extends Migration
             $table->decimal(column: 'monthly_payable', places: 3);
             $table->decimal(column: 'service_fee', places: 3);
             $table->decimal(column: 'balance', places: 3);
+
             $table->dateTime('activated_at')->nullable();
             $table->dateTime('completed_at')->nullable();
             $table->dateTime('renewed_at')->nullable();
             $table->dateTime('cancelled_at')->nullable();
             $table->dateTime('rejected_at')->nullable();
+
             $table->text('rejection_reason')->nullable();
+
             $table->integer('needed_approval_count');
             $table->integer('approval_count')->default(0);
-            $table->foreignIdFor(Loan::class, 'renewed_on')->nullable()->index();
+
+            $table->foreignIdFor(Loan::class, 'renewed_from')->nullable()->index();
             $table->foreignIdFor(Loan::class, 'renewed_to')->nullable()->index();
+            
             $table->timestamps();
         });
     }

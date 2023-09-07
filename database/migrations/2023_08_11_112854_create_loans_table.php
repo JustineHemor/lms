@@ -25,7 +25,6 @@ return new class extends Migration
             $table->foreignIdFor(LoanType::class, 'loan_type_id')->index();
             $table->string('payment_term');
             $table->decimal(column: 'requested_amount', places: 3);
-            $table->decimal(column: 'approved_amount', places: 3)->nullable();
             $table->decimal(column: 'interest', places: 3);
             $table->decimal(column: 'total_payable', places: 3);
             $table->decimal(column: 'monthly_payable', places: 3);

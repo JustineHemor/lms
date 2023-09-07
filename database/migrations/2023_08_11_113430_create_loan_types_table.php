@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('loan_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->index();
+            $table->integer('minumum_payment_term');
+            $table->integer('maximum_payment_term');
             $table->decimal(column: 'interest_rate', places: 3);
             $table->decimal(column: 'service_fee', places: 3);
             $table->timestamps();

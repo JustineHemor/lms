@@ -16,6 +16,8 @@ class LoanTypeFactory extends Factory
     {
         return [
             'name' => $this->faker->words(2, true),
+            'minumum_payment_term' => $this->faker->numberBetween(0, 12),
+            'maximum_payment_term' => $this->faker->numberBetween(16, 36),
             'interest_rate' => $this->faker->randomFloat(2, 0.5, 1),
             'service_fee' => $this->faker->randomFloat(2, 0.5, 1),
         ];

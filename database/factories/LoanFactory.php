@@ -2,12 +2,10 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Domain\Loan\Models\Loan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domain\Loan\Models\Loan>
- */
 class LoanFactory extends Factory
 {
     protected $model = Loan::class;
@@ -16,7 +14,11 @@ class LoanFactory extends Factory
     {
         return [
             'state' => 'pending',
-
+            'requester_id' => UserFactory::class,
+            'application_number' => Carbon::today()->format('ymd-').$this->faker->numerify('#####'),
+            'loan_type_id' => LoanTypeFactory::class,
+            'payment_term' => '10',
+            
         ];
     }
 }

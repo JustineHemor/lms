@@ -2,6 +2,7 @@
 
 namespace Domain\Loan\Models;
 
+use App\Models\User;
 use Database\Factories\LoanFactory;
 use Domain\LoanType\Models\LoanType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +17,7 @@ class Loan extends Model
     use HasFactory;
 
     protected $attributes = [
-        'status' => 'pending',
+        'state' => 'pending',
     ];
 
     protected static function newFactory(): LoanFactory
@@ -27,5 +28,10 @@ class Loan extends Model
     public function loan_type(): BelongsTo
     {
         return $this->belongsTo(LoanType::class);
+    }
+
+    public function requester(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'requester_id');
     }
 }

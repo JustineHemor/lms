@@ -24,12 +24,14 @@ return new class extends Migration
             $table->string('application_number')->index();
             $table->foreignIdFor(LoanType::class, 'loan_type_id')->index();
             $table->string('payment_term');
-            $table->decimal(column: 'requested_amount', places: 3);
+            $table->decimal(column: 'amount', places: 3);
             $table->decimal(column: 'interest', places: 3);
             $table->decimal(column: 'total_payable', places: 3);
             $table->decimal(column: 'monthly_payable', places: 3);
             $table->decimal(column: 'service_fee', places: 3);
             $table->decimal(column: 'balance', places: 3);
+
+            $table->integer('approval_count')->default(0);
 
             $table->dateTime('activated_at')->nullable();
             $table->dateTime('completed_at')->nullable();
@@ -38,9 +40,6 @@ return new class extends Migration
             $table->dateTime('rejected_at')->nullable();
 
             $table->text('rejection_reason')->nullable();
-
-            $table->integer('needed_approval_count');
-            $table->integer('approval_count')->default(0);
 
             $table->foreignIdFor(Loan::class, 'renewed_from')->nullable()->index();
             $table->foreignIdFor(Loan::class, 'renewed_to')->nullable()->index();

@@ -26,6 +26,7 @@ class LoanFactory extends Factory
             'monthly_payable' => $this->faker->numerify('####'),
             'service_fee' => $this->faker->numerify('###'),
             'balance' => $this->faker->numerify('#####'),
+            'needed_approval_count' => 1,
         ];
     }
 }

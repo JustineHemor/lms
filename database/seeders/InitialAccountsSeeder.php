@@ -23,6 +23,8 @@ class InitialAccountsSeeder extends Seeder
         $this->user('Patrick Dastar', 'patrick@mail.com', ['Secretary'], '123qweasd');
 
         $this->user('Bob Dabilder', 'bob@mail.com', ['Member'], '123qweasd');
+
+        $this->user('Justine Hemor', 'hemor.justine14@gmail.com', ['Member','Secretary','Credit Committee','Manager'], '123qweasd');
     }
 
     public function user(string $name, string $email, array $roles, ?string $password = null): User

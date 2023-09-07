@@ -31,6 +31,7 @@ return new class extends Migration
             $table->decimal(column: 'service_fee', places: 3);
             $table->decimal(column: 'balance', places: 3);
 
+            $table->integer('needed_approval_count');
             $table->integer('approval_count')->default(0);
 
             $table->dateTime('activated_at')->nullable();
